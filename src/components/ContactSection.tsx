@@ -93,7 +93,7 @@ const ContactSection = () => {
                     <motion.a
                       key={social.label}
                       href={social.href}
-                      target="blank"
+                      target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       className="p-3 rounded-lg glass-card text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
