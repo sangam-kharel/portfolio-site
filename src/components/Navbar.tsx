@@ -28,7 +28,7 @@ const Navbar = () => {
             </div>
             <span className="font-mono font-bold text-lg">
               <span className="text-primary">{"<"}</span>
-              SK
+              Sangam Kharel
               <span className="text-primary">{"/>"}</span>
             </span>
           </a>
