@@ -54,14 +54,11 @@ const ContactSection = () => {
                     >
                       <item.icon className="w-5 h-5 text-primary" />
                   </a>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
-                      <p className="text-foreground font-medium">{item.value}</p>
-                    </div>
-                  </div>
                 ))}
               </div>
+            </div>
+            </motion.div>
+              
 
               {/* Social Links */}
               <div>
