@@ -41,24 +41,20 @@ const ContactSection = () => {
                   or opportunities to be part of your vision.
                 </p>
               </div>
-
+ 
               <div className="space-y-4">
                 {contactInfo.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.label}
-                    whileHover={{scale: 1.1, y: -2}}
-                    key={item.label} className="flex items-center gap-4"
-                    className="p-3 rounded-lg glass-card"
-                      aria-label={item.label}
-                    >
+                  <div key={item.label} className="flex items-center gap-4">
+                    <div className="p-3 rounded-lg glass-card">
                       <item.icon className="w-5 h-5 text-primary" />
-                  </a>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">{item.label}</p>
+                      <p className="text-foreground font-medium">{item.value}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
-            </div>
-            </motion.div>
-              
 
               {/* Social Links */}
               <div>
