@@ -42,29 +42,39 @@ const ContactSection = () => {
                 </p>
               </div>
 
-              <div className="space-y-4">
-                {contactInfo.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="blank"
-                    rel="noopener noreferre"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="p-3 rounded-lg glass-card"
-                    aria-label={item.label}
-                    <div key={item.label} className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg glass-card">
-                   >
-                      <item.icon className="w-5 h-5 text-primary" />
-                    </a>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
-                      <p className="text-foreground font-medium">{item.value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+{contactInfo.map((item) => (
+    <motion.div
+        key={item.label}
+        variants={itemVariants}
+        className="flex items-center gap-4" // This wrapper div is for the whole item container
+    >
+        {item.href ? (
+            <a
+                href={item.href}
+                className="flex items-center gap-4 p-3 rounded-lg glass-card hover:bg-opacity-90 transition duration-300" // Combining classes
+                aria-label={item.label}
+            > {/* The opening <a> tag is properly closed here */}
+                <div className="p-3 rounded-lg bg-white/10"> {/* Clean wrapper for the icon */}
+                    <item.icon className="w-6 h-6 text-accent" />
+                </div>
+                <div> {/* Wrapper for the text content */}
+                    <p className="text-lg font-semibold">{item.label}</p>
+                    <p className="text-base text-gray-500">{item.value}</p>
+                </div>
+            </a>
+        ) : (
+            <div className="flex items-center gap-4 p-3 rounded-lg glass-card"> {/* Static Location item */}
+                <div className="p-3 rounded-lg bg-white/10">
+                    <item.icon className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                    <p className="text-lg font-semibold">{item.label}</p>
+                    <p className="text-base text-gray-500">{item.value}</p>
+                </div>
+            </div>
+        )}
+    </motion.div>
+))}
               {/* Social Links */}
               <div>
                 <p className="text-sm text-muted-foreground mb-4">Find me on</p>
