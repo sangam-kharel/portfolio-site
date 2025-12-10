@@ -4,7 +4,7 @@ import SectionTitle from "./SectionTitle";
 
 const ContactSection = () => {
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "sangamkharel222@example.com", href: "https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRmTwrZQLhBpFwTNKmplFMwkshFJMCmRZMqDLDFJMpXLMSXDqBjgHPNwVzjBTwjkgjphdLL" },
+    { icon: Mail, label: "Email", value: "sangamkharel222@example.com", href:"mailto: sangamkharel222@gmail.com", },
     { icon: MapPin, label: "Location", value: "Nepal" },
   ];
 
