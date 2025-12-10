@@ -90,13 +90,15 @@ const HeroSection = () => {
                 className="flex items-center justify-center lg:justify-start gap-4"
               >
                 {[
-                  { icon: Github, href: "#", label: "GitHub" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Mail, href: "#contact", label: "Email" },
+                  { icon: Github, href: "https://github.com/sangam-kharel", label: "GitHub" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/sangam-kharel-348684375/", label: "LinkedIn" },
+                  { icon: Mail, href: "mailto:sangamkharel222@gmail.com", label: "Email" },
                 ].map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
+                    target="blank"
+                    rel="noopener noreferrer"
                     className="p-3 rounded-lg glass-card text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
                     aria-label={social.label}
                   >
