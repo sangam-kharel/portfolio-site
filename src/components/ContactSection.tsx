@@ -4,14 +4,14 @@ import SectionTitle from "./SectionTitle";
 
 const ContactSection = () => {
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "sangam@example.com" },
+    { icon: Mail, label: "Email", value: "sangamkharel222@example.com", href: "https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRmTwrZQLhBpFwTNKmplFMwkshFJMCmRZMqDLDFJMpXLMSXDqBjgHPNwVzjBTwjkgjphdLL" },
     { icon: MapPin, label: "Location", value: "Nepal" },
   ];
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "#" },
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
-    { icon: Twitter, label: "Twitter", href: "#" },
+    { icon: Github, label: "GitHub", href: "https://github.com/sangam-kharel" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sangam-kharel-348684375/" },
+    { icon: Twitter, label: "Twitter", href: "https://x.com/sangamkharel2" },
   ];
 
   return (
