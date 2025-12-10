@@ -4,10 +4,53 @@ import SectionTitle from "./SectionTitle";
 
 const ContactSection = () => {
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "sangamkharel222@gmail.com", href:"mailto: sangamkharel222@gmail.com", },
+    { icon: Mail, label: "Email", value: "sangamkharel222@gmail.com", href: "mailto:sangamkharel222@gmail.com" },
     { icon: MapPin, label: "Location", value: "Nepal" },
   ];
 
+  return (
+    <div className="space-y-4">
+      {contactInfo.map((item) => {
+        // Determine if it should be a clickable link (motion.a) or a static container (div)
+        const Container = item.href ? motion.a : 'div';
+        
+        // Define common classes for both link and static container
+        const commonClasses = "p-3 rounded-lg glass-card flex items-center gap-4";
+
+        // Define link-specific props for motion.a
+        const linkProps = item.href ? {
+          href: item.href,
+          target: "blank",
+          rel: "noopener noreferrer",
+          whileHover: { scale: 1.05, y: -2 }, // Slight adjustment for better visual
+          className: commonClasses + " cursor-pointer transition-transform duration-300",
+          // The container will be the clickable/animated element
+        } : {
+          className: commonClasses,
+        };
+
+        return (
+          <Container
+            key={item.label}
+            aria-label={item.label}
+            {...linkProps}
+          >
+            {/* Inner div for the icon to maintain the desired look */}
+            <div className="p-3 rounded-lg glass-card">
+              <item.icon className="w-5 h-5 text-primary" />
+            </div>
+            
+            {/* Content Text */}
+            <div>
+              <p className="text-sm text-muted-foreground">{item.label}</p>
+              <p className="text-foreground font-medium">{item.value}</p>
+            </div>
+          </Container>
+        );
+      })}
+    </div>
+  );
+};
   const socialLinks = [
     { icon: Github, label: "GitHub", href: "https://github.com/sangam-kharel" },
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sangam-kharel-348684375/" },
@@ -42,20 +85,6 @@ const ContactSection = () => {
                 </p>
               </div>
 
-              <div className="space-y-4">
-                {contactInfo.map((item) => (
-                  <div key={item.label} className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg glass-card">
-                      <item.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
-                      <p className="text-foreground font-medium">{item.value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
               {/* Social Links */}
               <div>
                 <p className="text-sm text-muted-foreground mb-4">Find me on</p>
@@ -64,6 +93,8 @@ const ContactSection = () => {
                     <motion.a
                       key={social.label}
                       href={social.href}
+                      target="blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       className="p-3 rounded-lg glass-card text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
                       aria-label={social.label}
