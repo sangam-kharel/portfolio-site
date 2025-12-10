@@ -42,39 +42,6 @@ const ContactSection = () => {
                 </p>
               </div>
 
-{contactInfo.map((item) => (
-    <motion.div
-        key={item.label}
-        variants={itemVariants}
-        className="flex items-center gap-4" // This wrapper div is for the whole item container
-    >
-        {item.href ? (
-            <a
-                href={item.href}
-                className="flex items-center gap-4 p-3 rounded-lg glass-card hover:bg-opacity-90 transition duration-300" // Combining classes
-                aria-label={item.label}
-            > {/* The opening <a> tag is properly closed here */}
-                <div className="p-3 rounded-lg bg-white/10"> {/* Clean wrapper for the icon */}
-                    <item.icon className="w-6 h-6 text-accent" />
-                </div>
-                <div> {/* Wrapper for the text content */}
-                    <p className="text-lg font-semibold">{item.label}</p>
-                    <p className="text-base text-gray-500">{item.value}</p>
-                </div>
-            </a>
-        ) : (
-            <div className="flex items-center gap-4 p-3 rounded-lg glass-card"> {/* Static Location item */}
-                <div className="p-3 rounded-lg bg-white/10">
-                    <item.icon className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                    <p className="text-lg font-semibold">{item.label}</p>
-                    <p className="text-base text-gray-500">{item.value}</p>
-                </div>
-            </div>
-        )}
-    </motion.div>
-))}
               {/* Social Links */}
               <div>
                 <p className="text-sm text-muted-foreground mb-4">Find me on</p>
