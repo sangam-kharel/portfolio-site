@@ -123,7 +123,7 @@ const ContactSection = () => {
                 <form
                   action="https://formsubmit.co/sangamkharel222@gmail.com"
                   method="POST"
-                  onSubmit={() => setIsSubmitted(true)}
+                  onSubmit={() => setTiemout(() => setIsSubmitted(true), 500)}
                   className="space-y-6"
                 >
                   {/* FormSubmit settings */}
