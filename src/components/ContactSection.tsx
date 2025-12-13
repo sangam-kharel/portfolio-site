@@ -1,51 +1,45 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, MapPin, Send, Github, Linkedin, Twitter, Phone } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  Twitter,
+  Phone,
+} from "lucide-react";
 import SectionTitle from "./SectionTitle";
-
+ 
 const ContactSection = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!name || !email || !message) {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    const subject = `Contact from ${name}`;
-    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-    const mailto = `mailto:sangamkharel222@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-    setIsSubmitted(true);
-    setName("");
-    setEmail("");
-    setMessage("");
-  };
-
-  const handleReset = () => {
-    setIsSubmitted(false);
-  };
-
+ 
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "sangamkharel222@gmail.com", href: "mailto:sangamkharel222@gmail.com" },
-    { icon: Phone, label: "Phone", value: "+977 9829196150", href: "tel:+9779829196150" },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "sangamkharel222@gmail.com",
+      href: "mailto:sangamkharel222@gmail.com",
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+977 9829196150",
+      href: "tel:+9779829196150",
+    },
     { icon: MapPin, label: "Location", value: "Nepal" },
   ];
-  
+ 
   const socialLinks = [
     { icon: Github, label: "GitHub", href: "https://github.com/sangam-kharel" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sangam-kharel-348684375/" },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/sangam-kharel-348684375/",
+    },
     { icon: Twitter, label: "Twitter", href: "https://x.com/sangamkharel2" },
   ];
-
+ 
   return (
     <section id="contact" className="py-24 relative">
       <div className="container mx-auto px-6">
@@ -53,25 +47,24 @@ const ContactSection = () => {
           title="Get In Touch"
           subtitle="Have a project in mind or just want to say hi? Let's connect!"
         />
-
+ 
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <motion.div
-              id="contact-info"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="space-y-4">
+              <div>
                 <h3 className="text-xl font-semibold text-foreground">
                   Let's Build Something Amazing
                 </h3>
-                <p className="text-muted-foreground">
-                  I'm always open to discussing new projects, creative ideas, 
-                  or opportunities to be part of your vision.
+                <p className="text-muted-foreground mt-2">
+                  I'm always open to discussing new projects, creative ideas, or
+                  opportunities.
                 </p>
               </div>
  
@@ -82,25 +75,25 @@ const ContactSection = () => {
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {item.label}
+                      </p>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="text-foreground font-medium hover:underline"
-                          target={item.href.startsWith("http") ? "_blank" : undefined}
-                          rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="font-medium hover:underline"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-foreground font-medium">{item.value}</p>
+                        <p className="font-medium">{item.value}</p>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-
-              {/* Social Links */}
+ 
+              {/* Social */}
               <div>
                 <p className="text-sm text-muted-foreground mb-4">Find me on</p>
                 <div className="flex gap-4">
@@ -110,9 +103,7 @@ const ContactSection = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      className="p-3 rounded-lg glass-card text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
-                      aria-label={social.label}
+                      className="p-3 rounded-lg glass-card hover:text-primary transition"
                     >
                       <social.icon className="w-5 h-5" />
                     </a>
@@ -120,7 +111,7 @@ const ContactSection = () => {
                 </div>
               </div>
             </motion.div>
-
+ 
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -129,51 +120,65 @@ const ContactSection = () => {
               viewport={{ once: true }}
             >
               {!isSubmitted ? (
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <form
+                  action="https://formsubmit.co/sangamkharel222@gmail.com"
+                  method="POST"
+                  onSubmit={() => setIsSubmitted(true)}
+                  className="space-y-6"
+                >
+                  {/* FormSubmit settings */}
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="New Contact Form Message"
+                  />
+                  <input type="hidden" name="_template" value="table" />
+ 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block mb-2 text-sm font-medium">
                       Name
                     </label>
                     <input
                       type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 rounded-lg bg-muted border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 rounded-lg bg-muted border"
                       placeholder="Your name"
                     />
                   </div>
-
+ 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block mb-2 text-sm font-medium">
                       Email
                     </label>
                     <input
                       type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-lg bg-muted border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 rounded-lg bg-muted border"
                       placeholder="your@email.com"
                     />
                   </div>
-
+ 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block mb-2 text-sm font-medium">
                       Message
                     </label>
                     <textarea
+                      name="message"
                       rows={4}
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      className="w-full px-4 py-3 rounded-lg bg-muted border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
+                      required
+                      className="w-full px-4 py-3 rounded-lg bg-muted border resize-none"
                       placeholder="Tell me about your project..."
                     />
                   </div>
-
+ 
                   <motion.button
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition-all duration-300 glow-primary"
+                    className="w-full px-8 py-4 rounded-lg bg-primary text-primary-foreground flex items-center justify-center gap-2 font-semibold"
                   >
                     <Send className="w-4 h-4" />
                     Send Message
@@ -183,20 +188,17 @@ const ContactSection = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex flex-col items-center justify-center space-y-6 py-12"
+                  className="text-center py-12 space-y-6"
                 >
-                  <p className="text-lg font-semibold text-foreground text-center">
+                  <p className="text-lg font-semibold">
                     Thanks for reaching out! I'll get back to you soon.
                   </p>
-                  <motion.button
-                    onClick={handleReset}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all duration-300 glow-primary"
+                  <button
+                    onClick={() => setIsSubmitted(false)}
+                    className="px-8 py-4 rounded-lg bg-primary text-primary-foreground font-semibold"
                   >
-                    Anything else?
-                  </motion.button>
+                    Send Another Message
+                  </button>
                 </motion.div>
               )}
             </motion.div>
@@ -206,5 +208,6 @@ const ContactSection = () => {
     </section>
   );
 };
-
+ 
 export default ContactSection;
+ 
